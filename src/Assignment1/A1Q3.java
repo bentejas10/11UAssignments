@@ -55,6 +55,57 @@ public class A1Q3 {
         //have karel turn
         karel.turnLeft();
         karel.turnLeft();
+        karel.turnLeft();
+        
+        //make karel move
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
+        
+        //make karel move
+        karel.move();
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
+        karel.turnLeft();
+        karel.turnLeft();
+        
+        //make karel move
+        karel.move();
+        
+        //have karel drop object
+        karel.putThing();
+        
+        //make karel move
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
+        karel.turnLeft();
+        karel.turnLeft();
+        
+        //make karel move
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
+        
+        //make karel moev
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
+        karel.turnLeft();
+        karel.turnLeft();
+        
+        //make karel move
+        karel.move();
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
         
         
         
