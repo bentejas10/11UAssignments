@@ -49,7 +49,13 @@ public class A1Q3 {
         //have karel turn
         karel.turnLeft();
         
-        //
+        //make karel move
+        karel.move();
+        
+        //have karel turn
+        karel.turnLeft();
+        karel.turnLeft();
+        
         
         
         
