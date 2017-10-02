@@ -22,7 +22,7 @@ public class A2Q3 {
         City kitchener = new City();
 
         //create a robot
-        Robot karel = new Robot(kitchener, 30, 41, Direction.SOUTH);
+        Robot karel = new Robot(kitchener, 4, 1, Direction.SOUTH);
 
         //have karel always return to the origin 0,0
         while (karel.getAvenue() != 0) {
