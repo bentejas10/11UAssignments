@@ -74,7 +74,16 @@ public class A3Q4 {
         new Wall(benland, 5, 5, Direction.EAST);
         new Wall(benland, 4, 5, Direction.EAST);
         
-        for(int moveCount = 0; moveCount < 3; moveCount = moveCount + 1){
+        for(int moveCount = 0; moveCount < 16; moveCount = moveCount + 1){
+            //make ben go around the square
+            ben.move();
+            ben.move();
+            ben.move();
+            //make ben go past the origin and start on the next square
+            if(ben.getAvenue() == 3 && ben.getStreet() == 3){
+            }else{
+                ben.turnLeft();
+            }
             
             
             
