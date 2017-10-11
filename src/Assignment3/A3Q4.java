@@ -79,6 +79,7 @@ public class A3Q4 {
             ben.move();
             ben.move();
             ben.move();
+            
             //make ben go past the origin and start on the next square
             if(ben.getAvenue() == 3 && ben.getStreet() == 3){
             }else{
