@@ -32,36 +32,61 @@ public class A4Q5 {
         String outputName = inputName.nextLine();
         
         System.out.println("What was the first test out of?:");
-        int outputFirstOutOf = inputFirstOutOf.nextInt();
+        double outputFirstOutOf = inputFirstOutOf.nextInt();
         
         System.out.println("What mark did you get?:");
-        int outputFirstScore = inputFirstScore.nextInt();
+        double outputFirstScore = inputFirstScore.nextInt();
         
         System.out.println("What was the second test out of?:");
-        int outputSecondOutOf = inputSecondOutOf.nextInt();
+        double outputSecondOutOf = inputSecondOutOf.nextInt();
         
         System.out.println("What mark did you get?:");
-        int outputSecondScore = inputSecondScore.nextInt();
+        double outputSecondScore = inputSecondScore.nextInt();
         
         System.out.println("What was the first test out of?:");
-        int outputThirdOutOf = inputThirdOutOf.nextInt();
+        double outputThirdOutOf = inputThirdOutOf.nextInt();
         
         System.out.println("What mark did you get?:");
-        int outputThirdScore = inputThirdScore.nextInt();
+        double outputThirdScore = inputThirdScore.nextInt();
         
         System.out.println("What was the fourth test out of?:");
-        int outputFourthOutOf = inputThirdOutOf.nextInt();
+        double outputFourthOutOf = inputThirdOutOf.nextInt();
         
         System.out.println("What mark did you get?:");
-        int outputFourthScore = inputFourthScore.nextInt();
+        double outputFourthScore = inputFourthScore.nextInt();
         
         System.out.println("What was the fifth test out of?:");
-        int outputFifthOutOf = inputFifthOutOf.nextInt();
+        double outputFifthOutOf = inputFifthOutOf.nextInt();
         
         System.out.println("What mark did you get?:");
-        int outputFifthScore = inputFifthScore.nextInt();
+        double outputFifthScore = inputFifthScore.nextInt();
         
         System.out.println("Test scores for Doug:");
         
+        double test1Final = outputFirstScore / outputFirstOutOf *100;
+        
+        System.out.println("Test 1: " + test1Final + "%");
+        
+        double test2Final = outputSecondScore / outputSecondOutOf *100;
+        
+        System.out.println("Test 2: " + test2Final + "%");
+        
+        double test3Final = outputThirdScore / outputThirdOutOf *100;
+        
+        System.out.println("Test 3: " + test3Final + "%");
+        
+        double test4Final = outputFourthScore / outputFourthOutOf *100;
+        
+        System.out.println("Test 4: " + test4Final + "%");
+        
+        double test5Final = outputFifthScore / outputFifthOutOf *100;
+        
+        System.out.println("Test 5: " + test5Final + "%");
+        
+        double testsAdded = test1Final + test2Final + test3Final + test4Final + test5Final;
+        
+        double totalAverage = testsAdded / 5;
+        
+        System.out.println("Average: " + totalAverage + "%");
     }
 }
