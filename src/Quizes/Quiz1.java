@@ -48,40 +48,39 @@ public class Quiz1 {
         new Thing(kitchener, 1, 7);
 
         //have karel pick up a thing and return
-        
-       while(true){
-        while(!karel.frontIsClear()){
+
+        while (true) {
+            while (!karel.frontIsClear()) {
                 karel.turnLeft();
                 karel.turnLeft();
                 karel.move();
+            }
+            while (karel.getAvenue() == 1) {
+                karel.move();
+
+            }
+            while (karel.getAvenue() != 1 && karel.frontIsClear()) {
+                karel.move();
+
+
+                if (karel.canPickThing()) {
+                    karel.pickThing();
+                    karel.turnLeft();
+                    karel.turnLeft();
+                    while (!karel.canPickThing() && karel.countThingsInBackpack() > 0 && karel.getAvenue() != 1) {
+                        karel.move();
+
+
+
+                    }
+                    if (karel.getAvenue() == 1) {
+                        karel.putThing();
+                        karel.turnLeft();
+                        karel.turnLeft();
+
+                    }
+                }
+            }
         }
-        while(karel.getAvenue() == 1){
-            karel.move();
-            
-        }
-        while(karel.getAvenue() != 1 && karel.frontIsClear()){
-            karel.move();
-            
-                
-            if(karel.canPickThing()){
- karel.pickThing();
- karel.turnLeft();
- karel.turnLeft();
-while(!karel.canPickThing() && karel.countThingsInBackpack() >0 && karel.getAvenue() != 1){
-    karel.move();
-
-
-    
-        }
-if(karel.getAvenue()==1){
-    karel.putThing();
-    karel.turnLeft();
-    karel.turnLeft();
-
+    }
 }
-}
-}
-}
-}
-}
-
