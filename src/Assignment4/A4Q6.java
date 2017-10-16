@@ -32,7 +32,7 @@ public class A4Q6 {
 
 
         }
-        if (outputSpeed >= outputSpeedLimit + 1 && outputSpeed <= outputSpeedLimit + 20) {
+        if (outputSpeed > outputSpeedLimit && outputSpeed <= outputSpeedLimit + 20) {
             System.out.println("You are speeding, your fine is $100.");
 
         }
