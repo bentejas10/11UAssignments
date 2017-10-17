@@ -27,6 +27,7 @@ public class A4Q7 {
         //create loop
         while (currentSquare != 100) {
             System.out.println("Please enter sum of dice");
+           
             int outputDice = inputDice.nextInt();
 
             if (currentSquare + outputDice > 100) {
