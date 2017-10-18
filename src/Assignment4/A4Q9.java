@@ -148,13 +148,13 @@ public class A4Q9 extends javax.swing.JFrame {
         String firstInput = firstNumber.getText();
         
         //convert text to an integer
-        double firstNumber = Integer.parseInt(firstInput);
+        double firstNumber = Double.parseDouble(firstInput);
         
         //get text from input box
         String secondInput = secondNumber.getText();
         
         //convert text to an integer
-        double secondNumber = Integer.parseInt(secondInput);
+        double secondNumber = Double.parseDouble(secondInput);
         
         //calculate addition
         double addResult = firstNumber + secondNumber;
@@ -171,13 +171,13 @@ public class A4Q9 extends javax.swing.JFrame {
         String firstInput = firstNumber.getText();
         
         //convert text to an integer
-        double firstNumber = Integer.parseInt(firstInput);
+        double firstNumber = Double.parseDouble(firstInput);
         
         //get text from input box
         String secondInput = secondNumber.getText();
         
         //convert text to an integer
-        double secondNumber = Integer.parseInt(secondInput);
+        double secondNumber = Double.parseDouble(secondInput);
         
         //calculate addition
         double subResult = firstNumber - secondNumber;
@@ -194,13 +194,13 @@ public class A4Q9 extends javax.swing.JFrame {
         String firstInput = firstNumber.getText();
         
         //convert text to an integer
-        double firstNumber = Integer.parseInt(firstInput);
+        double firstNumber = Double.parseDouble(firstInput);
         
         //get text from input box
         String secondInput = secondNumber.getText();
         
         //convert text to an integer
-        double secondNumber = Integer.parseInt(secondInput);
+        double secondNumber = Double.parseDouble(secondInput);
         
         //calculate addition
         double mulResult = firstNumber * secondNumber;
@@ -217,13 +217,13 @@ public class A4Q9 extends javax.swing.JFrame {
         String firstInput = firstNumber.getText();
         
         //convert text to an integer
-        double firstNumber = Integer.parseInt(firstInput);
+        double firstNumber = Double.parseDouble(firstInput);
         
         //get text from input box
         String secondInput = secondNumber.getText();
         
         //convert text to an integer
-        double secondNumber = Integer.parseInt(secondInput);
+        double secondNumber = Double.parseDouble(secondInput);
         
         //calculate addition
         double divResult = firstNumber / secondNumber;
