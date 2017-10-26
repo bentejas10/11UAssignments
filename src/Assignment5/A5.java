@@ -23,6 +23,22 @@ public class A5 {
         System.out.println("Please enter a word.");
         String word = input.nextLine();
         
-        StringBuilder =  
+        for(int i= 0; i < word.length(); i++){
+        
+            
+          if (word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i)=='i' || word.charAt(i)=='u' || word.charAt(i)=='o'){
+            
+            String partOne = word.substring(0, i);
+            String partTwo = word.substring(i);
+            
+            word = partOne + "ub" + partTwo;
+            
+           i = i+3;
+          }
+                }
+            System.out.println(word);
+        
+                
+        }
     }
-}
+    
