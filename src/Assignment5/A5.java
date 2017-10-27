@@ -16,10 +16,12 @@ public class A5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
        // create a scanner
         Scanner input = new Scanner(System.in);
         
         //ask for a word to translate
+        while(true){
         System.out.println("Please enter a word.");
         String word = input.nextLine();
         
@@ -32,13 +34,24 @@ public class A5 {
             String partTwo = word.substring(i);
             
             word = partOne + "ub" + partTwo;
-            
-           i = i+3;
+              i = i+3;
+              
+              if (word.contains("ea") || word.contains("oo") || word.contains("ou") || word.contains("ee")){
+                  i = i+1;
+              }
+              
           }
+            
+        
+          
                 }
+        
+        
             System.out.println(word);
         
                 
-        }
+        
     }
+}
+}
     
