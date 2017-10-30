@@ -21,37 +21,23 @@ public class A5 {
         Scanner input = new Scanner(System.in);
         
         //ask for a word to translate
-        while(true){
+    
         System.out.println("Please enter a word.");
+        
         String word = input.nextLine();
         
-        for(int i= 0; i < word.length(); i++){
+     StringBuilder sb = new StringBuilder(word);
         
-            
-          if (word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i)=='i' || word.charAt(i)=='u' || word.charAt(i)=='o'){
-            
-            String partOne = word.substring(0, i);
-            String partTwo = word.substring(i);
-            
-            word = partOne + "ub" + partTwo;
-              i = i+3;
-              
-              if (word.contains("ea") || word.contains("oo") || word.contains("ou") || word.contains("ee")){
-                  i = i+1;
-              }
-              
-          }
-            
+     for(int i = 0; i<word.length(); i++){
+     
+         if (word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'u' || word.charAt(i) == 'i' || word.charAt(i) == 'o'){
+             
+         
+            System.out.println(sb);
         
-          
-                }
+         }    
         
-        
-            System.out.println(word);
-        
-                
-        
-    }
+     }
 }
 }
     
