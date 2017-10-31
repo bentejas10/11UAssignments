@@ -25,19 +25,34 @@ public class A5 {
         System.out.println("Please enter a word.");
         
         String word = input.nextLine();
+        String translated = "";
+     StringBuilder sb = new StringBuilder(translated);
+        boolean vowel = false;
         
-     StringBuilder sb = new StringBuilder(word);
+        
         
      for(int i = 0; i<word.length(); i++){
      
-         if (word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'u' || word.charAt(i) == 'i' || word.charAt(i) == 'o'){
-             
+         if ((word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'u' || word.charAt(i) == 'i' || word.charAt(i) == 'o') && vowel == false){
+             sb.append("ub");
+         sb.append(word.charAt(i));
+         vowel = true;
          
-            System.out.println(sb);
+         }else if((word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'u' || word.charAt(i) == 'i' || word.charAt(i) == 'o') && vowel == true){
+             
+             sb.append(word.charAt(i));
+            
+         }else{
+             sb.append(word.charAt(i));
+            
+            vowel = false;
+            
         
          }    
+     
         
      }
+         System.out.println(sb);
 }
 }
     
