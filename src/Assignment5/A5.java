@@ -25,12 +25,14 @@ public class A5 {
         System.out.println("Please enter a word.");
         
         String word = input.nextLine();
+        
+        // create the string to build off of
         String translated = "";
      StringBuilder sb = new StringBuilder(translated);
         boolean vowel = false;
         
         
-        
+        // loop to go through vowels
      for(int i = 0; i<word.length(); i++){
      
          if ((word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'u' || word.charAt(i) == 'i' || word.charAt(i) == 'o') && vowel == false){
