@@ -54,6 +54,7 @@ public class A5 {
      
         
      }
+     // print out translated word
          System.out.println(sb);
 }
 }
