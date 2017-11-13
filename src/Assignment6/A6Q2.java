@@ -21,6 +21,20 @@ public class A6Q2 {
         Scanner inputH = new Scanner(System.in);
         
         System.out.println("How many people do you wish to add?");
-        
+         int people = inputN.nextInt();
+         int[] average = new int[people];
+         int oAverage = 0;
+         System.out.println("What are their heights in cm?");
+         
+         for (int i = 0; i < average.length; i++) {
+            average[i] = inputH.nextInt();
+            oAverage = oAverage + average[i];
+
+
+        }
+         int total2 = oAverage / people; //this is the average
+        System.out.println("The class average height is " + total2 + "cm.");
+         
+        for(int e = 0; )
     }
 }

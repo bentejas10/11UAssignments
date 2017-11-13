@@ -24,7 +24,7 @@ public class A6Q1 {
         System.out.println("How many students are in class?");
         //spot for user to input
         int students = input.nextInt();
-        //create a doble array to hold all of the variables
+        //create a double array to hold all of the variables
         double[] average = new double[students];
         // create the starting value for overall average
         double oAverage = 0;
