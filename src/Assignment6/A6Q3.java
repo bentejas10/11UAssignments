@@ -18,14 +18,25 @@ public class A6Q3 {
     public static void main(String[] args) {
         // create a scanner
         Scanner input = new Scanner(System.in);
+   
         
         // create an array to hold the two integers
-        int digits[] = new int[1];
+        int digits[] = new int[2];
+        System.out.println("What are the two digits?");
         
         //go through array to collect integers
         for (int i = 0; i < digits.length; i++) {
             digits[i] = input.nextInt();
             
+            
         }
+        if(digits[0] > digits[1]){
+            digits[0] = digits[1];
+            
+            
+        }
+         
+        
+        System.out.println("The two digits are: " + digits[0] + ", " + digits[1]);
     }
 }
