@@ -30,8 +30,22 @@ public class A6Q3 {
             
             
         }
+        // create a variable to hold digits[0]
+        int tool = 0;
+        
+        //onyl use this if digits
         if(digits[0] > digits[1]){
-            digits[0] = digits[1];
+        
+        tool = digits[0];
+        
+        digits[0] = digits[1];
+        
+        digits[1] = tool;
+        
+        
+        
+        
+            
             
             
         }
