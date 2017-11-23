@@ -73,14 +73,23 @@ public class Quiz1 {
 
 
                     }
+                    if(!karel.frontIsClear()){
+    break;
+                    }
                     if (karel.getAvenue() == 1) {
                         karel.putThing();
                         karel.turnLeft();
                         karel.turnLeft();
 
+    
+}
+
                     }
                 }
             }
         }
-    }
-}
+        
+            
+        }
+    
+

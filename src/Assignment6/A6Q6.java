@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Assignment6;
@@ -8,15 +9,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author tejab6669
+ * @author Ben
  */
-public class A6Q5 {
+public class A6Q6 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-   // create a scanner
+        // create a scanner
         Scanner input = new Scanner(System.in);
         Scanner inputN = new Scanner(System.in);
 
@@ -52,41 +53,27 @@ public class A6Q5 {
                 }
             }
         }
-        System.out.println("The grades in order are: ");
-
-        for (int o = 0; o < grades.length; o++) {
-            System.out.println(grades[o]);
-            
-            
+        
+        int numberMOne = number - 1;
+        
+        int bAverage = 0;
+        
+        for(int y = 0; y < grades.length; y++){
+        bAverage = bAverage + grades[y];
+          
         }
+        double average2 = bAverage / number;  
         
-        // math to find the middle
-         int half = number / 2;
-         int halfMOne = half - 1;
+        System.out.println("The lowest mark in the class is: " + grades[0]);
         
-         // create varible for middle of odd number
-         int middle = number / 2;
-                 int actualMiddle = grades[0 + middle];
-                 
-        int remainder = number % 2;
+        System.out.println("The highest mark in the class is: " + grades[0 + numberMOne]);
         
         
-         if(remainder == 0){
-             int median = grades[0 + half] + grades[0 + halfMOne];
-             double totalMedian = median / 2;
-             
-             System.out.println("The median of the grades is: " + totalMedian);
-             
-         }else{
-             System.out.println("The median of the grades is: " + actualMiddle);
-             
+        System.out.println("The class average is: " + average2);
+        
+        
+        
          }
         
-        
-        
     }
-}
-
     
-    
-
