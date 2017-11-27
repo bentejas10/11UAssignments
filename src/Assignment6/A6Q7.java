@@ -29,24 +29,28 @@ public class A6Q7 {
         // create starting variable for assigning numbers
         int value = 0;
         
+        //for look to fill up array
+        for(int e = 0; e < numbers.length; e++){
+         numbers[e] = numbers[e] + 1;
+        }
+
         //for loop for array
-        for(int i = 0; i < numbers.length; i++){
-            value = value + 1;
-            numbers[i] = value;
+        for(int i = 0; i <pNumbers.length; i++){
+            if(i != 997){
+                
+            
+            pNumbers[i + 2] = false;
+            
+            }
+            if(pNumbers[i] == true){            System.out.println(pNumbers[i]);
+            }
             
         }
-            for(int e = 0; e < pNumbers.length; e++){
-                pNumbers[e] = true;
-                
-                
-            }
-        for(int y = 0; y < pNumbers.length; y++){
-                
            
         }
         
     }
-}
+
 
         
     
