@@ -17,42 +17,33 @@ public class A6Q7 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // create a scanner
-        Scanner input = new Scanner(System.in);
+        // say original statement for aesthetics 
+        System.out.println("The prime numbers under 1000 are: ");
+
+        // create boolean array to mark all numbers
+        boolean pNumbers[] = new boolean[1000];
+        pNumbers[0] = false;
         
-        // create an array
-        int numbers[] = new int[1000];
-        
-        // create a boolean array
-        boolean[] pNumbers = new boolean[1000];
-        
-        // create starting variable for assigning numbers
-        int value = 0;
-        
-        //for look to fill up array
-        for(int e = 0; e < numbers.length; e++){
-         numbers[e] = numbers[e] + 1;
+        // set all spots in boolean array to true
+        for (int i = 0; i < 1000; i++) {
+            pNumbers[i] = true;
         }
 
-        //for loop for array
-        for(int i = 0; i <pNumbers.length; i++){
-            if(i != 997){
-                
-            
-            pNumbers[i + 2] = false;
-            
+        // go through numbers between 2 and 1000 to see if they are prime starting with 2 as the divisor
+        for (int x = 2; x <= 1000; x++) {
+
+            // proceed when if statement is correct
+            if (pNumbers[x - 1] == true) {
+
+                // output the position before x
+                System.out.println(x);
+
+                // go to the multiple of the current position of x in second for loop and make it false
+                for (int y = 2 * x; y <= 1000; y = y + x) {
+                    pNumbers[y - 1] = false;
+                }
             }
-            if(pNumbers[i] == true){            System.out.println(pNumbers[i]);
-            }
-            
+
         }
-           
-        }
-        
     }
-
-
-        
-    
-    
-
+}
