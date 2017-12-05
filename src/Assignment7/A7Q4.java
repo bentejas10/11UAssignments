@@ -14,11 +14,7 @@ public class A7Q4 {
 public double compoundInterest(double inValue, double gRate, int nOfYear){
      
     // create the (1 + r) part of the formula
-    double inBracket = gRate + 1;
-     
-     double bracketE = Math.pow(inBracket, nOfYear);
-     
-     double finalAnswer = bracketE * inValue;
+    double finalAnswer = inValue * (Math.pow((1 + gRate), nOfYear));
  
      
      return finalAnswer;
@@ -38,11 +34,11 @@ public double compoundInterest(double inValue, double gRate, int nOfYear){
         
         // ask for inital value
         System.out.println("What is your inital value?");
-        double inValue = input.nextInt();
+        double inValue = input.nextDouble();
         
         // ask for growth rate
         System.out.println("What is your rate of growth?");
-        double gRate = input.nextInt() / 100;
+        double gRate = input.nextDouble() / 100;
         
         // ask for number of years
         
