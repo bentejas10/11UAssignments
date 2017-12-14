@@ -17,7 +17,7 @@ public class A7Q3 {
         System.out.println("The numbers that are divisible into " + integer + " are: ");
         for (int i = 1; i < integer; i++) {
             int remainder = integer % i;
-            if(remainder == 0){
+            if (remainder == 0) {
                 System.out.println(i);
             }
         }

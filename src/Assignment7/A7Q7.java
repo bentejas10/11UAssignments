@@ -34,7 +34,7 @@ public class A7Q7 {
                 number = number / 10;
 
             }
-            
+
             // return final output
             return number;
         }
