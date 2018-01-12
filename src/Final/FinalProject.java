@@ -10,7 +10,6 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Color;
-import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -34,20 +33,25 @@ public class FinalProject extends JComponent {
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
     // YOUR GAME VARIABLES WOULD GO HERE
-    int [] xpoints = {50, 100, 150, 100};
-    int [] ypoints = {50, 90, 50, 170};
-    Polygon player = new Polygon(xpoints, ypoints, 4);
+    int[] xpoints = {50, 100, 150, 100};
+    int[] ypoints = {50, 90, 50, 170};
+    
+    // create player
+    Rectangle player = new Rectangle(50, 50, 25, 25);
+    //setting up/down/left/right keys to be false by default
     boolean right = false;
     boolean left = false;
     boolean up = false;
     boolean down = false;
-//displacement in the x and y directions
+    //displacement in the x and y directions
     int playerDX = 0;
     int playerDY = 0;
-
+    // array to create blocks later
+    Rectangle[] mazeBlocks = new Rectangle[4];
     // GAME VARIABLES END HERE   
     // Constructor to create the Frame and place the panel in
     // You will learn more about this in Grade 12 :)
+
     public FinalProject() {
         // creates a windows to show my game
         JFrame frame = new JFrame(title);
@@ -82,16 +86,28 @@ public class FinalProject extends JComponent {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
-        g.fillPolygon(player.x, player.y, xpoints, ypoints);
+        g.setColor(Color.BLACK);
+        for (int i = 0; i < mazeBlocks.length; i++) {
+            g.fillRect(mazeBlocks[i].x, mazeBlocks[i].y, mazeBlocks[i].width, mazeBlocks[i].height);
 
 
-        // GAME DRAWING ENDS HERE
+            g.fillRect(player.x, player.y, player.width, player.height);
+
+
+            // GAME DRAWING ENDS HERE
+        }
     }
+        // This method is used to do any pre-setup you might need to do
+        // This is run before the game loop begins!
+    
 
-    // This method is used to do any pre-setup you might need to do
-    // This is run before the game loop begins!
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
+        mazeBlocks[0] = new Rectangle(0, 0, WIDTH, 25);
+        mazeBlocks[1] = new Rectangle(0, 0, 25, HEIGHT);
+        mazeBlocks[2] = new Rectangle(HEIGHT + 25, 0, WIDTH, 25);
+        mazeBlocks[3] = new Rectangle(0, WIDTH - 25, 25, 0);
+
     }
 
     // The main game loop
@@ -115,16 +131,34 @@ public class FinalProject extends JComponent {
             // GAME LOGIC STARTS HERE 
 
             // up/down/left/right movement
-            if (right) {
+            if (right && !left) {
                 playerDX = 3;
-            } else if (left) {
+            } else if (left && !right) {
                 playerDX = -3;
-            } else if (up) {
-                playerDY = -3;
-            } else if (down) {
-                playerDY = 3;
             } else {
                 playerDX = 0;
+            }
+
+            if (up && !down) {
+                playerDY = -3;
+            } else if (down && !up) {
+                playerDY = 3;
+            } else {
+                playerDY = 0;
+            }
+
+
+            if (player.y > HEIGHT) {
+                player.y = 0;
+            }
+            if (player.y < 0) {
+                player.y = HEIGHT;
+            }
+            if (player.x > WIDTH) {
+                player.x = 0;
+            }
+            if (player.x < 0) {
+                player.x = WIDTH;
             }
 
             // update the player
@@ -206,9 +240,9 @@ public class FinalProject extends JComponent {
                 right = false;
             } else if (key == KeyEvent.VK_LEFT) {
                 left = false;
-            } else if (key == KeyEvent.VK_SPACE) {
+            } else if (key == KeyEvent.VK_UP) {
                 up = false;
-            } else if (key == KeyEvent.VK_SPACE) {
+            } else if (key == KeyEvent.VK_DOWN) {
                 down = false;
             }
         }
