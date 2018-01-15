@@ -4,7 +4,6 @@ package Final;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JComponent;
@@ -24,7 +23,7 @@ import java.awt.event.MouseWheelEvent;
 public class FinalProject extends JComponent {
 
     // Height and Width of our game
-    static final int WIDTH = 800;
+    static final int WIDTH = 600;
     static final int HEIGHT = 600;
     //Title of the window
     String title = "My Game";
@@ -35,9 +34,8 @@ public class FinalProject extends JComponent {
     // YOUR GAME VARIABLES WOULD GO HERE
     int[] xpoints = {50, 100, 150, 100};
     int[] ypoints = {50, 90, 50, 170};
-    
     // create player
-    Rectangle player = new Rectangle(50, 50, 25, 25);
+    Rectangle player = new Rectangle(50, 50, 15, 15);
     //setting up/down/left/right keys to be false by default
     boolean right = false;
     boolean left = false;
@@ -47,7 +45,7 @@ public class FinalProject extends JComponent {
     int playerDX = 0;
     int playerDY = 0;
     // array to create blocks later
-    Rectangle[] mazeBlocks = new Rectangle[4];
+    Rectangle[] mazeBlocks = new Rectangle[6];
     // GAME VARIABLES END HERE   
     // Constructor to create the Frame and place the panel in
     // You will learn more about this in Grade 12 :)
@@ -97,16 +95,17 @@ public class FinalProject extends JComponent {
             // GAME DRAWING ENDS HERE
         }
     }
-        // This method is used to do any pre-setup you might need to do
-        // This is run before the game loop begins!
-    
+    // This method is used to do any pre-setup you might need to do
+    // This is run before the game loop begins!
 
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
-        mazeBlocks[0] = new Rectangle(0, 0, WIDTH, 10);
+        mazeBlocks[0] = new Rectangle(0, 0, 85, 10);
         mazeBlocks[1] = new Rectangle(0, 10, 10, HEIGHT);
         mazeBlocks[2] = new Rectangle(10, HEIGHT - 10, WIDTH - 10, 10);
         mazeBlocks[3] = new Rectangle(WIDTH - 10, 10, 10, HEIGHT - 10);
+        mazeBlocks[4] = new Rectangle(35, 35, 50, 50);
+        mazeBlocks[5] = new Rectangle(110, 35, 50, 50);
     }
 
     // The main game loop
@@ -120,6 +119,7 @@ public class FinalProject extends JComponent {
         preSetup();
 
         // the main game loop section
+
         // game will end if you set done = false;
         boolean done = false;
         while (!done) {
@@ -146,58 +146,62 @@ public class FinalProject extends JComponent {
                 playerDY = 0;
             }
 
-
-            if (player.y > HEIGHT) {
+            if(player.y > HEIGHT){
                 player.y = 0;
             }
-            if (player.y < 0) {
+            if(player.y < 0){
                 player.y = HEIGHT;
             }
-            if (player.x > WIDTH) {
+            if(player.x > WIDTH){
                 player.x = 0;
             }
-            if (player.x < 0) {
+            if(player.x < 0){
                 player.x = WIDTH;
             }
-for(int i = 0; i < mazeBlocks.length; i++){
-                // did the player hit a block?
-                if(player.intersects(mazeBlocks[i])){
-                    int cHeight = Math.min(mazeBlocks[i].y + mazeBlocks[i].height, player.y + player.height) - Math.max(mazeBlocks[i].y, player.y);
-                    int cWidth = Math.min(mazeBlocks[i].x + mazeBlocks[i].width, player.x + player.width) - Math.max(mazeBlocks[i].x, player.x);
-                    
-                    // determine the smaller one to fix
-                    if(cWidth < cHeight){
-                        // fix the width
-                        // player on left side
-                        if(player.x < mazeBlocks[i].x){
-                            player.x = player.x - cWidth;
-                        }else{
-                            player.x = player.x + cWidth;
-                        }
-                        // stop the player moving sideways
-                        playerDX = 0;
-                    }else{
-                        
-                            
-                            // moving down?
-                            if(playerDY >= 0){
-                                // stop the down motion
-                                playerDY = 0;
-                            }
-                    }
-                            // moving up?
-                            if(playerDY <= 0){
-                                playerDY = 0;
-                            }
-                }
-}
-                
-
 
 
             // update the player
             player.x = player.x + playerDX;
             player.y = player.y + playerDY;
+
+
+            for (int i = 0; i < mazeBlocks.length; i++) {
+                // did the player hit a block?
+                if (player.intersects(mazeBlocks[i])) {
+                    int cHeight = Math.min(mazeBlocks[i].y + mazeBlocks[i].height, player.y + player.height) - Math.max(mazeBlocks[i].y, player.y);
+                    int cWidth = Math.min(mazeBlocks[i].x + mazeBlocks[i].width, player.x + player.width) - Math.max(mazeBlocks[i].x, player.x);
+
+                    // determine the smaller one to fix
+                    if (cWidth < cHeight) {
+                        // fix the width
+                        // player on left side
+                        if (player.x < mazeBlocks[i].x) {
+                            player.x = player.x - cWidth;
+                        } else {
+                            player.x = player.x + cWidth;
+                        }
+                        // stop the player moving sideways
+                        playerDX = 0;
+                    } else {
+
+
+                        // moving down?
+                        if (playerDY > 0) {
+                            // stop the down motion
+                            player.y = player.y - cHeight;
+                        }
+                    }
+                    // moving up?
+                    if (playerDY < 0) {
+                        player.y = player.y + cHeight;
+
+                    }
+
+                    playerDY = 0;
+                }
+            }
+
+
 
             // GAME LOGIC ENDS HERE 
             // update the drawing (calls paintComponent)
@@ -216,11 +220,10 @@ for(int i = 0; i < mazeBlocks.length; i++){
                 }
             } catch (Exception e) {
             };
-        
+
         }
     }
-        
-    
+
     // Used to implement any of the Mouse Actions
     private class Mouse extends MouseAdapter {
         // if a mouse button has been pressed down
