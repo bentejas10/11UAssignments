@@ -103,11 +103,10 @@ public class FinalProject extends JComponent {
 
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
-        mazeBlocks[0] = new Rectangle(0, 0, WIDTH, 25);
-        mazeBlocks[1] = new Rectangle(0, 0, 25, HEIGHT);
-        mazeBlocks[2] = new Rectangle(HEIGHT + 25, 0, WIDTH, 25);
-        mazeBlocks[3] = new Rectangle(0, WIDTH - 25, 25, 0);
-
+        mazeBlocks[0] = new Rectangle(0, 0, WIDTH, 10);
+        mazeBlocks[1] = new Rectangle(0, 10, 10, HEIGHT);
+        mazeBlocks[2] = new Rectangle(10, HEIGHT - 10, WIDTH - 10, 10);
+        mazeBlocks[3] = new Rectangle(WIDTH - 10, 10, 10, HEIGHT - 10);
     }
 
     // The main game loop
@@ -132,17 +131,17 @@ public class FinalProject extends JComponent {
 
             // up/down/left/right movement
             if (right && !left) {
-                playerDX = 3;
+                playerDX = 4;
             } else if (left && !right) {
-                playerDX = -3;
+                playerDX = -4;
             } else {
                 playerDX = 0;
             }
 
             if (up && !down) {
-                playerDY = -3;
+                playerDY = -4;
             } else if (down && !up) {
-                playerDY = 3;
+                playerDY = 4;
             } else {
                 playerDY = 0;
             }
@@ -160,6 +159,41 @@ public class FinalProject extends JComponent {
             if (player.x < 0) {
                 player.x = WIDTH;
             }
+for(int i = 0; i < mazeBlocks.length; i++){
+                // did the player hit a block?
+                if(player.intersects(mazeBlocks[i])){
+                    int cHeight = Math.min(mazeBlocks[i].y + mazeBlocks[i].height, player.y + player.height) - Math.max(mazeBlocks[i].y, player.y);
+                    int cWidth = Math.min(mazeBlocks[i].x + mazeBlocks[i].width, player.x + player.width) - Math.max(mazeBlocks[i].x, player.x);
+                    
+                    // determine the smaller one to fix
+                    if(cWidth < cHeight){
+                        // fix the width
+                        // player on left side
+                        if(player.x < mazeBlocks[i].x){
+                            player.x = player.x - cWidth;
+                        }else{
+                            player.x = player.x + cWidth;
+                        }
+                        // stop the player moving sideways
+                        playerDX = 0;
+                    }else{
+                        
+                            
+                            // moving down?
+                            if(playerDY >= 0){
+                                // stop the down motion
+                                playerDY = 0;
+                            }
+                    }
+                            // moving up?
+                            if(playerDY <= 0){
+                                playerDY = 0;
+                            }
+                }
+}
+                
+
+
 
             // update the player
             player.x = player.x + playerDX;
@@ -182,9 +216,11 @@ public class FinalProject extends JComponent {
                 }
             } catch (Exception e) {
             };
+        
         }
     }
-
+        
+    
     // Used to implement any of the Mouse Actions
     private class Mouse extends MouseAdapter {
         // if a mouse button has been pressed down
