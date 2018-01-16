@@ -23,8 +23,8 @@ import java.awt.event.MouseWheelEvent;
 public class FinalProject extends JComponent {
 
     // Height and Width of our game
-    static final int WIDTH = 600;
-    static final int HEIGHT = 600;
+    static final int WIDTH = 495;
+    static final int HEIGHT = 495;
     //Title of the window
     String title = "My Game";
     // sets the framerate and delay for our game
@@ -35,7 +35,7 @@ public class FinalProject extends JComponent {
     int[] xpoints = {50, 100, 150, 100};
     int[] ypoints = {50, 90, 50, 170};
     // create player
-    Rectangle player = new Rectangle(50, 50, 15, 15);
+    Rectangle player = new Rectangle(240, 240, 15, 15);
     //setting up/down/left/right keys to be false by default
     boolean right = false;
     boolean left = false;
@@ -45,7 +45,7 @@ public class FinalProject extends JComponent {
     int playerDX = 0;
     int playerDY = 0;
     // array to create blocks later
-    Rectangle[] mazeBlocks = new Rectangle[6];
+    Rectangle[] mazeBlocks = new Rectangle[40];
     // GAME VARIABLES END HERE   
     // Constructor to create the Frame and place the panel in
     // You will learn more about this in Grade 12 :)
@@ -106,6 +106,40 @@ public class FinalProject extends JComponent {
         mazeBlocks[3] = new Rectangle(WIDTH - 10, 10, 10, HEIGHT - 10);
         mazeBlocks[4] = new Rectangle(35, 35, 50, 50);
         mazeBlocks[5] = new Rectangle(110, 35, 50, 50);
+        mazeBlocks[6] = new Rectangle(185, 35, 50, 50);
+        mazeBlocks[7] = new Rectangle(260, 35, 50, 50);
+        mazeBlocks[8] = new Rectangle(335, 35, 50, 50);
+        mazeBlocks[9] = new Rectangle(410, 35, 50, 50);
+        mazeBlocks[10] = new Rectangle(35, 110, 50, 50);
+        mazeBlocks[11] = new Rectangle(35, 185, 50, 50);
+        mazeBlocks[12] = new Rectangle(35, 260, 50, 50);
+        mazeBlocks[13] = new Rectangle(35, 335, 50, 50);
+        mazeBlocks[14] = new Rectangle(35, 410, 50, 50);
+        mazeBlocks[15] = new Rectangle(110, 185, 50, 50);
+        mazeBlocks[16] = new Rectangle(185, 260, 50, 50);
+        mazeBlocks[17] = new Rectangle(260, 335, 50, 50);
+        mazeBlocks[18] = new Rectangle(335, 410, 50, 50);
+        mazeBlocks[19] = new Rectangle(410, 110, 50, 50);
+        mazeBlocks[20] = new Rectangle(410, 185, 50, 50);
+        mazeBlocks[21] = new Rectangle(410, 260, 50, 50);
+        mazeBlocks[22] = new Rectangle(410, 335, 50, 50);
+        mazeBlocks[23] = new Rectangle(410, 410, 50, 50);
+        mazeBlocks[24] = new Rectangle(335, 110, 50, 50);
+        mazeBlocks[25] = new Rectangle(335, 185, 50, 50);
+        mazeBlocks[26] = new Rectangle(335, 260, 50, 50);
+        mazeBlocks[27] = new Rectangle(335, 335, 50, 50);
+        mazeBlocks[28] = new Rectangle(260, 110, 50, 50);
+        mazeBlocks[29] = new Rectangle(260, 185, 50, 50);
+        mazeBlocks[30] = new Rectangle(260, 260, 50, 50);
+        mazeBlocks[31] = new Rectangle(260, 410, 50, 50);
+        mazeBlocks[32] = new Rectangle(185, 110, 50, 50);
+        mazeBlocks[33] = new Rectangle(185, 185, 50, 50);
+        mazeBlocks[34] = new Rectangle(185, 335, 50, 50);
+        mazeBlocks[35] = new Rectangle(185, 410, 50, 50);
+        mazeBlocks[36] = new Rectangle(110, 110, 50, 50);
+        mazeBlocks[37] = new Rectangle(110, 260, 50, 50);
+        mazeBlocks[38] = new Rectangle(110, 335, 50, 50);
+        mazeBlocks[39] = new Rectangle(110, 410, 50, 50);
     }
 
     // The main game loop
