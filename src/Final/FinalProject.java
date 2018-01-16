@@ -32,6 +32,14 @@ public class FinalProject extends JComponent {
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
     // YOUR GAME VARIABLES WOULD GO HERE
+    
+    
+    
+    
+    
+    
+    
+    
     int[] xpoints = {50, 100, 150, 100};
     int[] ypoints = {50, 90, 50, 170};
     // create player
@@ -46,6 +54,8 @@ public class FinalProject extends JComponent {
     int playerDY = 0;
     // array to create blocks later
     Rectangle[] mazeBlocks = new Rectangle[40];
+    // array to create collectable dots
+    
     // GAME VARIABLES END HERE   
     // Constructor to create the Frame and place the panel in
     // You will learn more about this in Grade 12 :)
@@ -86,24 +96,24 @@ public class FinalProject extends JComponent {
         // GAME DRAWING GOES HERE
         g.setColor(Color.BLACK);
         for (int i = 0; i < mazeBlocks.length; i++) {
-            g.fillRect(mazeBlocks[i].x, mazeBlocks[i].y, mazeBlocks[i].width, mazeBlocks[i].height);
-
-
-            g.fillRect(player.x, player.y, player.width, player.height);
-
+            if (mazeBlocks[i] != null) {
+                g.fillRect(mazeBlocks[i].x, mazeBlocks[i].y, mazeBlocks[i].width, mazeBlocks[i].height);
+            }
 
             // GAME DRAWING ENDS HERE
         }
+
+        g.fillRect(player.x, player.y, player.width, player.height);
     }
     // This method is used to do any pre-setup you might need to do
     // This is run before the game loop begins!
 
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
-        mazeBlocks[0] = new Rectangle(0, 0, 85, 10);
-        mazeBlocks[1] = new Rectangle(0, 10, 10, HEIGHT);
-        mazeBlocks[2] = new Rectangle(10, HEIGHT - 10, WIDTH - 10, 10);
-        mazeBlocks[3] = new Rectangle(WIDTH - 10, 10, 10, HEIGHT - 10);
+        mazeBlocks[0] = new Rectangle(0, -10, WIDTH, 20);
+        mazeBlocks[1] = new Rectangle(-50, 10, 60, HEIGHT);
+        mazeBlocks[2] = new Rectangle(10, HEIGHT - 10, WIDTH - 10, 20);
+        mazeBlocks[3] = new Rectangle(WIDTH - 10, 10, 50, HEIGHT - 10);
         mazeBlocks[4] = new Rectangle(35, 35, 50, 50);
         mazeBlocks[5] = new Rectangle(110, 35, 50, 50);
         mazeBlocks[6] = new Rectangle(185, 35, 50, 50);
@@ -140,6 +150,7 @@ public class FinalProject extends JComponent {
         mazeBlocks[37] = new Rectangle(110, 260, 50, 50);
         mazeBlocks[38] = new Rectangle(110, 335, 50, 50);
         mazeBlocks[39] = new Rectangle(110, 410, 50, 50);
+        
     }
 
     // The main game loop
@@ -180,16 +191,16 @@ public class FinalProject extends JComponent {
                 playerDY = 0;
             }
 
-            if(player.y > HEIGHT){
+            if (player.y > HEIGHT) {
                 player.y = 0;
             }
-            if(player.y < 0){
+            if (player.y < 0) {
                 player.y = HEIGHT;
             }
-            if(player.x > WIDTH){
+            if (player.x > WIDTH) {
                 player.x = 0;
             }
-            if(player.x < 0){
+            if (player.x < 0) {
                 player.x = WIDTH;
             }
 
@@ -223,15 +234,17 @@ public class FinalProject extends JComponent {
                         if (playerDY > 0) {
                             // stop the down motion
                             player.y = player.y - cHeight;
+                            
+
                         }
                     }
                     // moving up?
                     if (playerDY < 0) {
                         player.y = player.y + cHeight;
-
+                        
                     }
-
                     playerDY = 0;
+
                 }
             }
 
