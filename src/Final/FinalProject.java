@@ -35,7 +35,7 @@ public class FinalProject extends JComponent {
     
     int XSlots[] = {20, 95, 170, 245, 320, 395, 470};
     int YSlots[] = {20, 95, 170, 245, 320, 395, 470};
-    
+    Rectangle dots[] = new Rectangle[49]; 
     // x co-ordinates to generate dots
     
     
@@ -109,14 +109,11 @@ public class FinalProject extends JComponent {
 
 
         }
-        for (int e = 0; e < XSlots.length; e++){
-            for(int u = 0; u < YSlots.length; u++){
-                g.drawRect(XSlots[e], YSlots[u], 8, 8);
-                if(player.intersects()){
-                    g.fillRect(XSlots[e], YSlots[u], 8, 8);
-                }
-            }
+        for (int e = 0; e < dots.length; e++){
+        g.fillRect(dots[e].x, dots[e].x, 8, 8);
         }
+            
+        
             
         g.fillRect(player.x, player.y, player.width, player.height);
     // GAME DRAWING ENDS HERE
@@ -169,6 +166,14 @@ public class FinalProject extends JComponent {
         mazeBlocks[39] = new Rectangle(110, 410, 50, 50);
 
         
+        
+        for (int e = 0; e < XSlots.length; e++){
+            for(int u = 0; u < YSlots.length; u++){
+                int X = XSlots[e];
+                int Y = YSlots[u];
+                for(int x = 0; dots.length)
+            }
+        }
     }
 
     // The main game loop
