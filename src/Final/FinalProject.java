@@ -33,6 +33,9 @@ public class FinalProject extends JComponent {
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
     // YOUR GAME VARIABLES WOULD GO HERE
+    // create a boolean for when the player wins
+    boolean playerWin = false;
+
     // create a counter to hold player score
     int counter = 0;
 
@@ -149,9 +152,9 @@ public class FinalProject extends JComponent {
             g.fillRect(bigMenuB, 375, 30, 30);
             g.setColor(Color.BLUE);
             g.fillRect(smallMenuB, 395, 10, 10);
-            
+
         } else {
-            
+
             // for when game is not in menu
             // make random dot red
             g.setColor(Color.RED);
@@ -198,6 +201,26 @@ public class FinalProject extends JComponent {
             g.drawString("Type 'y' for yes.", 170, 245);
             g.drawString("Type 'n' for no.", 170, 285);
         }
+        if (playerWin) {
+            // create rectangle to border smaller rectangle
+            g.setColor(Color.WHITE);
+            g.fillRect(WIDTH / 2 - 153, HEIGHT / 2 - 148, 306, 206);
+            // create rectangle as a text box
+            g.setColor(Color.BLACK);
+            g.fillRect(WIDTH / 2 - 150, HEIGHT / 2 - 145, 300, 200);
+
+            // set font and color to white for game over messages
+            g.setColor(Color.WHITE);
+            g.setFont(biggerFont);
+            // game over messages
+            g.drawString("YOU WIN!", 190, 165);
+            // ask user if they want to play again
+            g.drawString("Play Again?", 190, 205);
+            // see users response for if they want to play again or not
+            g.drawString("Type 'y' for yes.", 170, 245);
+            g.drawString("Type 'n' for no.", 170, 285);
+        }
+
         // GAME DRAWING ENDS HERE
     }
 
@@ -268,6 +291,20 @@ public class FinalProject extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE 
+            if (playerWin && keyN) {
+                done = true;
+            }
+
+            if (playerWin && keyY) {
+                counter = 0;
+                frames = 0;
+                timer = 0;
+                player.x = 240;
+                player.y = 240;
+                spawnedDot = false;
+                gameOver = false;
+                keyY = false;
+            }
             // reset all game stats if user wants to play again after losing
             if (gameOver && keyY) {
                 counter = 0;
@@ -281,7 +318,10 @@ public class FinalProject extends JComponent {
             }
             // reset to display menu if user doesn't want to play again after losing
             if (gameOver && keyN) {
-                menu = true;
+                done = true;
+            }
+            if (timer == 50 && counter >= 100) {
+                playerWin = true;
             }
             // if user hasn't achieved the required score within time limit, game over = true
             if (timer == 50 && counter < 1000) {
@@ -318,13 +358,13 @@ public class FinalProject extends JComponent {
 
                 // so that you can evenly count seconds if fps is 60
                 int remainder = frames % 60;
-                if (remainder == 0 && !gameOver) {
+                if (remainder == 0 && !gameOver && !playerWin) {
                     // increase timer value for every 60 frames that goes by
                     timer = timer + 1;
                 }
             }
             // do the following code only if game over is not true
-            if (!gameOver) {
+            if (!gameOver && !playerWin) {
                 // up/down/left/right movement
                 // if user is pressing right and not left, go right
                 if (right && !left) {
@@ -399,7 +439,7 @@ public class FinalProject extends JComponent {
                     } else {
                         yAxis = YDots[6];
                     }
-// say that a dot is present
+                    // say that a dot is present
                     spawnedDot = true;
                 }
                 // update the player
