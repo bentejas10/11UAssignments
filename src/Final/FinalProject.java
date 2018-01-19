@@ -32,24 +32,12 @@ public class FinalProject extends JComponent {
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
     // YOUR GAME VARIABLES WOULD GO HERE
-    
-    int XSlots[] = {20, 95, 170, 245, 320, 395, 470};
-    int YSlots[] = {20, 95, 170, 245, 320, 395, 470};
-    Rectangle dots[] = new Rectangle[49]; 
-    // x co-ordinates to generate dots
-    
-    
-    //y co-ordinates to generate dots
-    int slotYOne = 20;
-    int slotYTwo = 95;
-    int slotYThree = 170;
-    int slotYFour = 245;
-    int slotYFive = 320;
-    int slotYSix = 395;
-    int slotYSeven = 470;
-    
-    int[] xpoints = {50, 100, 150, 100};
-    int[] ypoints = {50, 90, 50, 170};
+    int xAxis;
+    int yAxis;
+    int XDots[] = {20, 95, 170, 245, 320, 395, 470};
+    int YDots[] = {20, 95, 170, 245, 320, 395, 470};
+    // create a boolean to see if dot is spawned
+    boolean spawnedDot = false;
     // create player
     Rectangle player = new Rectangle(240, 240, 15, 15);
     //setting up/down/left/right keys to be false by default
@@ -101,6 +89,11 @@ public class FinalProject extends JComponent {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
+        g.setColor(Color.RED);
+        if (!spawnedDot) {
+            g.fillRect(xAxis, yAxis, 5, 5);
+        }
+        
         g.setColor(Color.BLACK);
         for (int i = 0; i < mazeBlocks.length; i++) {
             if (mazeBlocks[i] != null) {
@@ -109,19 +102,14 @@ public class FinalProject extends JComponent {
 
 
         }
-        for (int e = 0; e < dots.length; e++){
-        g.fillRect(dots[e].x, dots[e].x, 8, 8);
-        }
-            
         
-            
+
         g.fillRect(player.x, player.y, player.width, player.height);
-    // GAME DRAWING ENDS HERE
+        // GAME DRAWING ENDS HERE
     }
-    
+
     // This method is used to do any pre-setup you might need to do
     // This is run before the game loop begins!
-
     public void preSetup() {
         // Any of your pre setup before the loop starts should go here
         mazeBlocks[0] = new Rectangle(0, -10, WIDTH, 20);
@@ -164,20 +152,50 @@ public class FinalProject extends JComponent {
         mazeBlocks[37] = new Rectangle(110, 260, 50, 50);
         mazeBlocks[38] = new Rectangle(110, 335, 50, 50);
         mazeBlocks[39] = new Rectangle(110, 410, 50, 50);
+        if (!spawnedDot) {
+            int rXNumber = (int) (Math.random() * 7);
+            int rYNumber = (int) (Math.random() * 7);
 
-        
-        
-        for (int e = 0; e < XSlots.length; e++){
-            for(int u = 0; u < YSlots.length; u++){
-                int X = XSlots[e];
-                int Y = YSlots[u];
-                for(int x = 0; dots.length)
+
+            if (rXNumber == 1) {
+                xAxis = XDots[0];
+            } else if (rXNumber == 2) {
+                xAxis = XDots[1];
+            } else if (rXNumber == 3) {
+                xAxis = XDots[2];
+            } else if (rXNumber == 4) {
+                xAxis = XDots[3];
+            } else if (rXNumber == 5) {
+                xAxis = XDots[4];
+            } else if (rXNumber == 6) {
+                xAxis = XDots[5];
+            } else {
+                xAxis = XDots[6];
             }
+
+            if (rYNumber == 1) {
+                yAxis = YDots[0];
+            } else if (rYNumber == 2) {
+                yAxis = YDots[1];
+            } else if (rYNumber == 3) {
+                yAxis = YDots[2];
+            } else if (rYNumber == 4) {
+                yAxis = YDots[3];
+            } else if (rYNumber == 5) {
+                yAxis = YDots[4];
+            } else if (rYNumber == 6) {
+                yAxis = YDots[5];
+            } else {
+                yAxis = YDots[6];
+            }
+System.out.println(xAxis);
+            System.out.println(yAxis);
+            spawnedDot = true;
         }
     }
-
     // The main game loop
     // In here is where all the logic for my game will go
+
     public void run() {
         // Used to keep track of time used to draw and update the game
         // This is used to limit the framerate later on
@@ -268,6 +286,9 @@ public class FinalProject extends JComponent {
                     }
                     playerDY = 0;
 
+                }
+                if (player.intersects(xAxis, yAxis, 5, 5)) {
+                    spawnedDot = false;
                 }
             }
 
