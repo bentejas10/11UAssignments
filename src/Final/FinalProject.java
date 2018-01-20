@@ -67,6 +67,10 @@ public class FinalProject extends JComponent {
     boolean space = false;
     boolean keyY = false;
     boolean keyN = false;
+    boolean keyQ = false;
+    boolean keyT = false;
+    
+    
     //displacement in the x and y directions
     int playerDX = 0;
     int playerDY = 0;
@@ -141,6 +145,7 @@ public class FinalProject extends JComponent {
             g.setFont(biggerFont);
             g.drawString("Grab the Dot", WIDTH - 315, HEIGHT / 2);
             g.drawString("Press 'Space' to Play", WIDTH / 4 + 20, HEIGHT / 2 + 50);
+            g.drawString("Press 'Q' to Quit Game", WIDTH / 4 + 18, HEIGHT / 2 + 100);
 
             // having a large square chase a smaller square toward the right of the screen
             g.fillRect(bigMenu, 100, 30, 30);
@@ -149,9 +154,9 @@ public class FinalProject extends JComponent {
 
             // have a large square chase a smaller square toward the left of the screen
             g.setColor(Color.WHITE);
-            g.fillRect(bigMenuB, 375, 30, 30);
+            g.fillRect(bigMenuB, 425, 30, 30);
             g.setColor(Color.BLUE);
-            g.fillRect(smallMenuB, 395, 10, 10);
+            g.fillRect(smallMenuB, 445, 10, 10);
 
         } else {
 
@@ -173,7 +178,11 @@ public class FinalProject extends JComponent {
             // set font and colour to white for creating the timer and score
             g.setColor(Color.WHITE);
             g.setFont(biggerFont);
-            g.drawString("Goal: 50 seconds", 150, HEIGHT - 20);
+            if(keyT){
+            g.drawString("Goal: 55 seconds", 150, HEIGHT - 20);
+            }else{
+                g.drawString("Goal: 50 seconds", 150, HEIGHT - 20);
+            }
             g.drawString("Score: " + counter, 25, HEIGHT - 20);
             g.drawString(timer + " seconds", 380, HEIGHT - 20);
 
@@ -185,21 +194,23 @@ public class FinalProject extends JComponent {
         if (gameOver) {
             // create rectangle to border smaller rectangle
             g.setColor(Color.WHITE);
-            g.fillRect(WIDTH / 2 - 153, HEIGHT / 2 - 148, 306, 206);
+            g.fillRect(WIDTH / 2 - 203, HEIGHT / 2 - 153, 406, 306);
             // create rectangle as a text box
             g.setColor(Color.BLACK);
-            g.fillRect(WIDTH / 2 - 150, HEIGHT / 2 - 145, 300, 200);
+            g.fillRect(WIDTH / 2 - 200, HEIGHT / 2 - 150, 400, 300);
 
             // set font and color to white for game over messages
             g.setColor(Color.WHITE);
             g.setFont(biggerFont);
             // game over messages
-            g.drawString("YOU LOSE!", 190, 165);
+            g.drawString("YOU LOSE!", 195, 165);
             // ask user if they want to play again
             g.drawString("Play Again?", 190, 205);
             // see users response for if they want to play again or not
             g.drawString("Type 'y' for yes.", 170, 245);
-            g.drawString("Type 'n' for no.", 170, 285);
+            g.drawString("Type 'n' for no.", 175, 285);
+            g.drawString("Type 't' for an easier time limit.", 80, 325);
+            
         }
         if (playerWin) {
             // create rectangle to border smaller rectangle
@@ -291,10 +302,15 @@ public class FinalProject extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE 
+            
+            // if player wins and wants to quit
             if (playerWin && keyN) {
-                done = true;
+                playerWin = false;
+                menu = true;
+                keyN = false;
             }
-
+            // if player wins and wants to play again
+            // reset all game stats
             if (playerWin && keyY) {
                 counter = 0;
                 frames = 0;
@@ -302,11 +318,11 @@ public class FinalProject extends JComponent {
                 player.x = 240;
                 player.y = 240;
                 spawnedDot = false;
-                gameOver = false;
+                playerWin = false;
                 keyY = false;
             }
             // reset all game stats if user wants to play again after losing
-            if (gameOver && keyY) {
+            if (gameOver && keyY | keyT) {
                 counter = 0;
                 frames = 0;
                 timer = 0;
@@ -317,16 +333,39 @@ public class FinalProject extends JComponent {
                 keyY = false;
             }
             // reset to display menu if user doesn't want to play again after losing
-            if (gameOver && keyN) {
+            if (gameOver && keyN) {   
+                gameOver = false;
+                menu = true;
+                keyN = false;
+            }
+            if(keyT){
+                if (timer == 55 && counter >= 1000 && !menu) {
+                playerWin = true;
+                keyT = false;
+                
+            // if user hasn't achieved the required score within time limit, game over = true
+                }else if (timer == 55 && counter < 1000 && !menu) {
+                gameOver = true;
+                keyT = false;
+                
+            }
+            }else{
+            if (timer == 50 && counter >= 1000 && !menu) {
+                playerWin = true;
+                keyT = false;
+                
+            // if user hasn't achieved the required score within time limit, game over = true
+            }else if (timer == 50 && counter < 1000 && !menu) {
+                gameOver = true;
+                keyT = false;
+                
+            }
+            }
+            if(menu && keyQ){
+                keyQ = false;
                 done = true;
             }
-            if (timer == 50 && counter >= 100) {
-                playerWin = true;
-            }
-            // if user hasn't achieved the required score within time limit, game over = true
-            if (timer == 50 && counter < 1000) {
-                gameOver = true;
-            }
+            
             // movement for squares when menu is present
             if (menu) {
                 bigMenu = bigMenu + 2;
@@ -350,8 +389,9 @@ public class FinalProject extends JComponent {
             // continues to game if user presses space and menu is true
             if (space) {
                 menu = false;
-
+                space = false;
             }
+            
             //allows frames to count up
             if (!menu) {
                 frames = frames + 1;
@@ -365,8 +405,7 @@ public class FinalProject extends JComponent {
             }
             // do the following code only if game over is not true
             if (!gameOver && !playerWin) {
-                // up/down/left/right movement
-                // if user is pressing right and not left, go right
+                
                 if (right && !left) {
                     playerDX = 4;
                     // if user is pressing left and not right, go left
@@ -559,6 +598,10 @@ public class FinalProject extends JComponent {
                 keyY = true;
             } else if (key == KeyEvent.VK_N) {
                 keyN = true;
+            }else if(key == KeyEvent.VK_Q){
+                keyQ = true;
+            }else if(key == KeyEvent.VK_T){
+                keyT = true;
             }
         }
         // if a key has been released
