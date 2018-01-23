@@ -33,6 +33,9 @@ public class FinalProject extends JComponent {
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
     // YOUR GAME VARIABLES WOULD GO HERE
+    // large font
+    Font large = new Font("arial", Font.BOLD, 40);
+    
     // create colour blue violet
     Color purple = new Color(138,43,226);
     
@@ -135,7 +138,7 @@ public class FinalProject extends JComponent {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
-        g.setColor(Color.BLACK);
+        g.setColor(purple);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         if (menu) {
@@ -146,11 +149,13 @@ public class FinalProject extends JComponent {
             // create title wording and instruction for menu
             g.setColor(purple);
             g.setFont(biggerFont);
-            g.drawString("Grab the Dot", WIDTH - 315, HEIGHT / 2);
-            g.drawString("Press 'Space' to Play", WIDTH / 4 + 20, HEIGHT / 2 + 50);
-            g.drawString("Press 'Q' to Quit Game", WIDTH / 4 + 18, HEIGHT / 2 + 100);
+            g.drawString("Grab the Dot", WIDTH - 315, HEIGHT / 2 - 100);
+            g.drawString("Press 'Space' to Play", WIDTH / 4 + 20, HEIGHT / 2  - 50);
+            g.drawString("Press 'Q' to Quit Game", WIDTH / 4 + 18, HEIGHT / 2);
+            g.drawString("Score 1000 Points to Win!", WIDTH / 4, HEIGHT / 2 + 50);
 
             // having a large square chase a smaller square toward the right of the screen
+            g.setColor(Color.WHITE);
             g.fillRect(bigMenu, 100, 30, 30);
             g.setColor(purple);
             g.fillRect(smallMenu, 120, 10, 10);
@@ -158,20 +163,20 @@ public class FinalProject extends JComponent {
             // have a large square chase a smaller square toward the left of the screen
             g.setColor(Color.WHITE);
             g.fillRect(bigMenuB, 425, 30, 30);
-            g.setColor(Color.MAGENTA);
+            g.setColor(purple);
             g.fillRect(smallMenuB, 445, 10, 10);
 
         } else {
 
             // for when game is not in menu
             // make random dot red
-            g.setColor(Color.MAGENTA);
+            g.setColor(Color.WHITE);
             // set random numbers to impact spawn location of dot
             if (spawnedDot) {
                 g.fillRect(xAxis, yAxis, 8, 8);
             }
             // create all square obstacles around map and make them black
-            g.setColor(Color.MAGENTA);
+            g.setColor(Color.BLACK);
             for (int i = 0; i < mazeBlocks.length; i++) {
                 if (mazeBlocks[i] != null) {
                     g.fillRect(mazeBlocks[i].x, mazeBlocks[i].y, mazeBlocks[i].width, mazeBlocks[i].height);
@@ -183,7 +188,7 @@ public class FinalProject extends JComponent {
             g.fillRect(0, HEIGHT - 50, WIDTH, 50);
             
             // set font and colour to white for creating the timer and score
-            g.setColor(Color.MAGENTA);
+            g.setColor(purple);
             g.setFont(biggerFont);
             if(keyT){
             g.drawString("Goal: 55 seconds", 150, HEIGHT - 20);
@@ -191,7 +196,7 @@ public class FinalProject extends JComponent {
                 g.drawString("Goal: 50 seconds", 150, HEIGHT - 20);
             }
             g.drawString("Score: " + counter, 25, HEIGHT - 20);
-            g.drawString(timer + " seconds", 380, HEIGHT - 20);
+            g.drawString(timer + " seconds", 350, HEIGHT - 20);
 
 // create the player
             g.setColor(Color.WHITE);
@@ -207,7 +212,7 @@ public class FinalProject extends JComponent {
             g.fillRect(WIDTH / 2 - 200, HEIGHT / 2 - 150, 400, 300);
 
             // set font and color to white for game over messages
-            g.setColor(Color.MAGENTA);
+            g.setColor(purple);
             g.setFont(biggerFont);
             // game over messages
             g.drawString("YOU LOSE!", 195, 165);
@@ -217,6 +222,8 @@ public class FinalProject extends JComponent {
             g.drawString("Type 'y' for yes.", 170, 245);
             g.drawString("Type 'n' for no.", 175, 285);
             g.drawString("Type 't' for an easier time limit.", 80, 325);
+            g.setFont(biggerFont);
+            g.drawString("Thanks for Playing!", 160, 365);
             
         }
         if (playerWin) {
@@ -228,7 +235,7 @@ public class FinalProject extends JComponent {
             g.fillRect(WIDTH / 2 - 150, HEIGHT / 2 - 145, 300, 200);
 
             // set font and color to white for game over messages
-            g.setColor(Color.MAGENTA);
+            g.setColor(purple);
             g.setFont(biggerFont);
             // game over messages
             g.drawString("YOU WIN!", 190, 165);
@@ -237,6 +244,7 @@ public class FinalProject extends JComponent {
             // see users response for if they want to play again or not
             g.drawString("Type 'y' for yes.", 170, 245);
             g.drawString("Type 'n' for no.", 170, 285);
+            
         }
 
         // GAME DRAWING ENDS HERE
@@ -371,6 +379,7 @@ public class FinalProject extends JComponent {
             if(menu && keyQ){
                 keyQ = false;
                 done = true;
+                System.exit(0);
             }
             
             // movement for squares when menu is present
