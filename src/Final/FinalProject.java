@@ -22,7 +22,7 @@ import java.awt.event.MouseWheelEvent;
  * @author tejab6669
  */
 public class FinalProject extends JComponent {
-
+ 
     // Height and Width of our game
     static final int WIDTH = 495;
     static final int HEIGHT = 545;
