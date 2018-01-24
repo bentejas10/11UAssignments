@@ -322,6 +322,14 @@ public class FinalProject extends JComponent {
             if (playerWin && keyN) {
                 playerWin = false;
                 menu = true;
+                counter = 0;
+                frames = 0;
+                timer = 0;
+                player.x = 240;
+                player.y = 240;
+                spawnedDot = false;
+                playerWin = false;
+                keyY = false;
                 keyN = false;
             }
             // if player wins and wants to play again
