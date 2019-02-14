@@ -16,7 +16,7 @@ public class A5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+while(true){
         // create a scanner
         Scanner input = new Scanner(System.in);
 
@@ -56,5 +56,6 @@ public class A5 {
         }
         // print out translated word
         System.out.println(sb);
+    }
     }
 }

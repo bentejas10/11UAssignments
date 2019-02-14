@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class A7Q6 {
 
     public int lastDigit(int number) {
+        
         if (number < 0) {
 
             // create an integer where the negative inputted number is positive
@@ -44,7 +45,7 @@ public class A7Q6 {
 
         // create a scanner
         Scanner input = new Scanner(System.in);
-
+while(true){
         // tell user to input a number
         System.out.println("Please enter a number: ");
         int number = input.nextInt();
@@ -56,4 +57,5 @@ public class A7Q6 {
         System.out.println("The last digit of your number is: " + LFinal);
 
     }
+}
 }

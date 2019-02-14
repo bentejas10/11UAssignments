@@ -138,16 +138,16 @@ public class FinalProject extends JComponent {
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
         // GAME DRAWING GOES HERE
-        g.setColor(purple);
+        g.setColor(Color.white);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         if (menu) {
             // create backround for menu
-            g.setColor(Color.BLACK);
+            g.setColor(Color.WHITE);
             g.fillRect(0, 0, WIDTH, HEIGHT);
 
             // create title wording and instruction for menu
-            g.setColor(purple);
+            g.setColor(Color.green);
             g.setFont(biggerFont);
             g.drawString("Grab the Dot", WIDTH - 315, HEIGHT / 2 - 100);
             g.drawString("Press 'Space' to Play", WIDTH / 4 + 20, HEIGHT / 2  - 50);
@@ -155,28 +155,28 @@ public class FinalProject extends JComponent {
             g.drawString("Score 1000 Points to Win!", WIDTH / 4, HEIGHT / 2 + 50);
 
             // having a large square chase a smaller square toward the right of the screen
-            g.setColor(Color.WHITE);
+            g.setColor(Color.BLACK);
             g.fillRect(bigMenu, 100, 30, 30);
-            g.setColor(purple);
+            g.setColor(Color.green);
             g.fillRect(smallMenu, 120, 10, 10);
 
             // have a large square chase a smaller square toward the left of the screen
-            g.setColor(Color.WHITE);
+            g.setColor(Color.BLACK);
             g.fillRect(bigMenuB, 425, 30, 30);
-            g.setColor(purple);
+            g.setColor(Color.green);
             g.fillRect(smallMenuB, 445, 10, 10);
 
         } else {
 
             // for when game is not in menu
             // make random dot red
-            g.setColor(Color.WHITE);
+            g.setColor(Color.green);
             // set random numbers to impact spawn location of dot
             if (spawnedDot) {
                 g.fillRect(xAxis, yAxis, 8, 8);
             }
             // create all square obstacles around map and make them black
-            g.setColor(Color.BLACK);
+            g.setColor(Color.black);
             for (int i = 0; i < mazeBlocks.length; i++) {
                 if (mazeBlocks[i] != null) {
                     g.fillRect(mazeBlocks[i].x, mazeBlocks[i].y, mazeBlocks[i].width, mazeBlocks[i].height);
@@ -188,7 +188,7 @@ public class FinalProject extends JComponent {
             g.fillRect(0, HEIGHT - 50, WIDTH, 50);
             
             // set font and colour to white for creating the timer and score
-            g.setColor(purple);
+            g.setColor(Color.WHITE);
             g.setFont(biggerFont);
             if(keyT){
             g.drawString("Goal: 55 seconds", 150, HEIGHT - 20);
@@ -199,7 +199,7 @@ public class FinalProject extends JComponent {
             g.drawString(timer + " seconds", 350, HEIGHT - 20);
 
 // create the player
-            g.setColor(Color.WHITE);
+            g.setColor(Color.black);
             g.fillRect(player.x, player.y, player.width, player.height);
         }
         // what to do if game is over
@@ -212,7 +212,7 @@ public class FinalProject extends JComponent {
             g.fillRect(WIDTH / 2 - 200, HEIGHT / 2 - 150, 400, 300);
 
             // set font and color to white for game over messages
-            g.setColor(purple);
+            g.setColor(Color.green);
             g.setFont(biggerFont);
             // game over messages
             g.drawString("YOU LOSE!", 195, 165);
@@ -235,7 +235,7 @@ public class FinalProject extends JComponent {
             g.fillRect(WIDTH / 2 - 150, HEIGHT / 2 - 145, 300, 200);
 
             // set font and color to white for game over messages
-            g.setColor(purple);
+            g.setColor(Color.green);
             g.setFont(biggerFont);
             // game over messages
             g.drawString("YOU WIN!", 190, 165);
